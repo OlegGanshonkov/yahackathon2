@@ -1,0 +1,61 @@
+body {
+    padding: 15px;
+    background: #f4f4f4;
+}
+#main .col1 {
+    width:  100px;
+    float: left;
+    margin-bottom: 10px;
+}
+#main .col2 {
+    width:  200px;
+    float: left;
+}
+.clear { clear: both; }
+.space { height: 20px; }
+
+button {
+    padding: 5px 10px;
+    display: block;
+    width: 150px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    float: right;
+}
+
+#login-block, #registration-block {
+    border: 1px solid #ccc;
+    overflow: hidden;
+    width: 400px;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+#channel-block {
+    border:1px solid #ccc;
+    padding:10px;
+    float:left;
+    width: 400px;
+}
+
+h2 { text-align: center; }
+
+#user-login {
+    visibility: hidden;
+    height: 0px;
+}
+
+#room {
+    border: 1px solid #ccc;
+    float:left;
+    margin-left: 20px;
+    padding: 10px;
+    min-width:500px;
+}
+.messages, .message-block {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.message { border-bottom: 1px solid #ccc; }

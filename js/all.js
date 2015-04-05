@@ -37,8 +37,8 @@ $(function () {
     }
 
     function login() {
-        var login = $('#login-block input[name="login"]').val();
-        var password = $('#login-block input[name="password"]').val();
+        var login = $('#login input[name="login"]').val();
+        var password = $('#login input[name="password"]').val();
 
         if (login.length == 0) {
             alert("Логин не может быть пустым");

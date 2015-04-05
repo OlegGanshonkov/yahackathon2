@@ -54,6 +54,33 @@ if (isset($_POST['title'])) {
 
 $data['messages'] = $messages;
 
+/*
+ * RSS
+ */
+if (isset($_POST['title'])) {
+    $query = "SELECT * FROM channels WHERE title = '" . encode($_POST['title']) . "'";
+    $result = $db->query($query);
+    $row = $result->fetch_array(MYSQLI_ASSOC);
+    $channel_id = $row['id'];
+
+    $rows = array();
+    $query = "SELECT * FROM rss WHERE channel_id = '" . $channel_id . "'";
+    $result = $db->query($query);
+    while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+        $rows[] = $row;
+    }
+    
+    $rss = '';
+    foreach ($rows as $key => $item) {
+        $rss .= "
+	<div class='rss'>
+            " . htmlspecialchars_decode($item['url']) . "	
+	</div>
+	";
+    }
+}
+
+$data['rss'] = $rss;
 
 $data = json_encode($data);
 echo $data;

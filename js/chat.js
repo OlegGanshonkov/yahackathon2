@@ -56,15 +56,15 @@ $(function () {
             }
         });
     }
-    
+
     function getData() {
-        if (TIMER_DATA){
+        if (TIMER_DATA) {
             clearInterval(TIMER_DATA);
         }
         var title = CURRENT_TITLE;
         if (!title)
             title = $('#room .top h2').html();
-            
+
         $.ajax({
             type: "POST",
             url: '/chat/getData.php',
@@ -76,16 +76,20 @@ $(function () {
                         CHANNELS = val;
                         $('#channels').html(CHANNELS);
                         initChannels();
-                    } else if (i == 'messages'){
+                    } else if (i == 'messages') {
                         MESSAGES = val;
                         $('#room .messages').html(MESSAGES);
                     }
+                    else if (i == 'rss') {
+                        RSS = val;
+                        $('#rss-list').html(RSS);
+                    }
                 });
-                TIMER_DATA = setInterval(getData,3000);
+                TIMER_DATA = setInterval(getData, 1000);
             }
         });
     }
-    TIMER_DATA = setInterval(getData,3000);
+    TIMER_DATA = setInterval(getData, 1000);
 
     // Add channel
     $('#add-channel').click(function (event) {
@@ -143,7 +147,7 @@ $(function () {
                 data: ({message: message, login: login, title: title}),
                 success: function (msg) {
                     if (msg == 1) {
-                        alert('Сообщение успешно отправленно');
+                        /*alert('Сообщение успешно отправленно');*/
                         $('#newMessage').val('');
                     } else if (msg == 9) {
                         alert("Сообщение введено название");
@@ -153,7 +157,7 @@ $(function () {
 
         }
     }
-    
+
     // Add RSS
     $('#add-rss').click(function (event) {
         addRss();
@@ -174,7 +178,9 @@ $(function () {
                     if (msg == 1) {
                         alert('RSS успешно добавлен');
                         $('.services input[name="rss"]').val('');
-                    } else if (msg == 9) {
+                    } else if (msg == 2) {
+                        alert("Такой RSS уже есть");
+                    } else if (msg == 0) {
                         alert("Не правильно указан RSS");
                     }
                 }

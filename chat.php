@@ -54,7 +54,7 @@ if (!isset($_SESSION['user'])) {
                     </div>          
                     
                     <h2 id="active_channel_name" class="overflow_ellipsis">
-                        <span class="name "><span class="prefix">&#35;</span>Michael Pchelnikov</span>
+                        <span class="name "><span class="prefix">&#35;</span> <span id="title-room">Выберите комнату</span>  <span id="logout" style="margin-top:10px;" class="close myClose">X</span></span>
                     </h2>
                 
                 </div>
@@ -170,6 +170,22 @@ if (!isset($_SESSION['user'])) {
             <div class="clear"></div> 
             <button id="add-channel">Добавить</button>
             <div class="clear"></div>
+        </div>
+
+        <div id="services">
+            <h2>Добавить сервис <span class="close myClose">X</span></h2>
+            <div class="col1">
+                Rss: 
+            </div>
+            <div class="col2">
+                <input name="rss" type="text"/>
+            </div>
+            <div class="clear"></div> 
+            <button id="add-rss">Добавить</button>
+            <div class="clear"></div>
+            <hr/>
+            Добавленные RSS:
+            <div id="rss-list"></div>
         </div>
 
     </body>

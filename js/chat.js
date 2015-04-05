@@ -179,8 +179,8 @@ $(function () {
     });
 
     function addRss() {
-        var urlRss = $('.services input[name="rss"]').val();
-        var title = $('#room .top h2').html();
+        var urlRss = $('#services input[name="rss"]').val();
+        var title = $('#title-room').html();
 
         if (urlRss.length == 0) {
             alert("RSS не может быть пустым");
@@ -192,7 +192,8 @@ $(function () {
                 success: function (msg) {
                     if (msg == 1) {
                         alert('RSS успешно добавлен');
-                        $('.services input[name="rss"]').val('');
+                        $('#services input[name="rss"]').val('');
+                        $('#services').hide();
                     } else if (msg == 2) {
                         alert("Такой RSS уже есть");
                     } else if (msg == 0) {
@@ -204,6 +205,13 @@ $(function () {
         }
     }
 
+
+    $('#stars_toggle').click(function (event) {
+        $('#services').show();
+    });
+    $('#services .myClose').click(function (event) {
+        $('#services').hide();
+    });
 
 
 }); 

@@ -59,3 +59,11 @@ h2 { text-align: center; }
 }
 
 .message { border-bottom: 1px solid #ccc; }
+
+.services {
+    border: 1px solid #ccc;
+    float:left;
+    margin-left: 20px;
+    padding: 10px;
+    min-width:300px;
+}

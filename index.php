@@ -17,41 +17,41 @@
             <h1 align='center'>OpenCommunity</h1>
             <div id="login-block">
                 <div class="col1">
-                    Логин: 
+                    Р›РѕРіРёРЅ: 
                 </div>
                 <div class="col2">
                     <input name="login" type="text"/> 
                 </div>
                 <div class="clear"></div>
                 <div class="col1">
-                    Пароль: 
+                    РџР°СЂРѕР»СЊ: 
                 </div>
                 <div class="col2">
                     <input name="password" type="password" type="text" />
                 </div>   
                 <div class="clear"></div>
                 <div class="space"></div>
-                <button id="loginButton">Войти</button>
+                <button id="loginButton">Р’РѕР№С‚Рё</button>
 
             </div>
 
             <div id="registration-block">
                 <div class="col1">
-                    Логин: 
+                    Р›РѕРіРёРЅ: 
                 </div>
                 <div class="col2">
                     <input name="login" type="text"/> 
                 </div>
                 <div class="clear"></div>
                 <div class="col1">
-                    Пароль: 
+                    РџР°СЂРѕР»СЊ: 
                 </div>
                 <div class="col2">
                     <input name="password" type="password" type="text" />
                 </div>   
                 <div class="clear"></div>
                 <div class="space"></div>
-                <button id="registrationButton">Зарегистрироваться</button>
+                <button id="registrationButton">Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ</button>
             </div>
 
         </div>

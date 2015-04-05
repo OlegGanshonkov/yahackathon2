@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['user'])) {
-    echo 'Доступ запрещён';
+    echo 'Р”РѕСЃС‚СѓРї Р·Р°РїСЂРµС‰С‘РЅ';
     die;
 }
 ?>
@@ -20,18 +20,18 @@ if (!isset($_SESSION['user'])) {
         <div id='main'>
             <h1 align='center'>OpenCommunity</h1>
             <div id="login-block"><?php echo $_SESSION['user']; ?>
-                <button id="logout">Выйти</button>
+                <button id="logout">Р’С‹Р№С‚Рё</button>
             </div>            
             <div id="channel-block">
                 <h2>Channels</h2>
                 <div class="col1">
-                    Название: 
+                    РќР°Р·РІР°РЅРёРµ: 
                 </div>
                 <div class="col2">
                     <input name="title" type="text"/>
                 </div>
                 <div class="clear"></div> 
-                <button id="add-channel">Добавить</button>
+                <button id="add-channel">Р”РѕР±Р°РІРёС‚СЊ</button>
                 <div class="clear"></div>
                 <hr/>
                 <div id="channels"></div>
@@ -44,13 +44,26 @@ if (!isset($_SESSION['user'])) {
 
                 </div>
                 <div class="message-block">
-                    <span>Введите сообщение:</span><br>
+                    <span>Р’РІРµРґРёС‚Рµ СЃРѕРѕР±С‰РµРЅРёРµ:</span><br>
                     <textarea cols="70" rows="10" id="newMessage"></textarea>
                     <br>
-                    <button id="newMessage-button">Отправить</button>
+                    <button id="newMessage-button">РћС‚РїСЂР°РІРёС‚СЊ</button>
                     <div class="clear"></div>
                 </div>
-
+            </div>
+            <div class="services">
+                <h2>Services</h2>
+                <div class="col1">
+                    Rss: 
+                </div>
+                <div class="col2">
+                    <input name="rss" type="text"/>
+                </div>
+                <div class="clear"></div> 
+                <button id="add-rss">Р”РѕР±Р°РІРёС‚СЊ</button>
+                <div class="clear"></div>
+                <hr/>
+                <div id="rss-list"></div>
             </div>
         </div>
     </body>

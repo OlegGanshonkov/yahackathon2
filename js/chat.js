@@ -1,7 +1,7 @@
 $(function () {
     var userLogin = "";
 
-    // Выход
+    // Р’С‹С…РѕРґ
     $('#logout').click(function (event) {
         var login = $('#user-login').html();
         $.ajax({
@@ -19,21 +19,73 @@ $(function () {
     /*
      * CHAT
      */
-    //Обновление списка channels
+    //РћР±РЅРѕРІР»РµРЅРёРµ СЃРїРёСЃРєР° channels
     //setInterval(channels, 1000);
+    var CHANNELS = '';
+    var MESSAGES = '';
+    var CURRENT_TITLE = '';
+    var TIMER_DATA = null;
 
-    function channels() {
+    if (parts = String(document.location).split("?", 2)[1]) {
+        var parts = String(document.location).split("?", 2)[1].split("&");
+        var vars = parts[0].split('=');
+        var name = vars[0];
+        if (name == 'title') {
+            var title = vars[1];
+            if (title) {
+                CURRENT_TITLE = title;
+                openChannel(title);
+            }
+        }
+    }
+
+    function openChannel(title) {
         $.ajax({
             type: "POST",
-            url: "/chat/channels.php",
-            success: function (html) {
-                $('#channels').html(html);
-                initChannels();
+            url: '/chat/openChannel.php',
+            data: ({title: title}),
+            success: function (msg) {
+                if (msg) {
+                    CURRENT_TITLE = title;
+                    $('#room h2').html(title);
+                    var stateParameters = {url: ''};
+                    history.pushState(stateParameters, "", '/chat.php?title=' + title); // РјРµРЅСЏРµРј Р°РґСЂРµСЃ
+                } else {
+                    alert("РћС€РёР±РєР° РѕС‚РєСЂС‹С‚РёСЏ Channel");
+                }
             }
         });
     }
-    channels();
-
+    
+    function getData() {
+        if (TIMER_DATA){
+            clearInterval(TIMER_DATA);
+        }
+        var title = CURRENT_TITLE;
+        if (!title)
+            title = $('#room .top h2').html();
+            
+        $.ajax({
+            type: "POST",
+            url: '/chat/getData.php',
+            data: ({title: title}),
+            dataType: "json",
+            success: function (data) {
+                $.each(data, function (i, val) {
+                    if (i == 'channels') {
+                        CHANNELS = val;
+                        $('#channels').html(CHANNELS);
+                        initChannels();
+                    } else if (i == 'messages'){
+                        MESSAGES = val;
+                        $('#room .messages').html(MESSAGES);
+                    }
+                });
+                TIMER_DATA = setInterval(getData,3000);
+            }
+        });
+    }
+    TIMER_DATA = setInterval(getData,3000);
 
     // Add channel
     $('#add-channel').click(function (event) {
@@ -44,7 +96,7 @@ $(function () {
         var title = $('#channel-block input[name="title"]').val();
 
         if (title.length == 0) {
-            alert("Название не может быть пустым");
+            alert("РќР°Р·РІР°РЅРёРµ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј");
         } else {
             $.ajax({
                 type: "POST",
@@ -52,11 +104,11 @@ $(function () {
                 data: ({title: title}),
                 success: function (msg) {
                     if (msg == 1) {
-                        alert('Channel успешно добавлен');
+                        alert('Channel СѓСЃРїРµС€РЅРѕ РґРѕР±Р°РІР»РµРЅ');
                     } else if (msg == 2) {
-                        alert("Channel с таким названием уже существует");
+                        alert("Channel СЃ С‚Р°РєРёРј РЅР°Р·РІР°РЅРёРµРј СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚");
                     } else if (msg == 9) {
-                        alert("Неверно введено название");
+                        alert("РќРµРІРµСЂРЅРѕ РІРІРµРґРµРЅРѕ РЅР°Р·РІР°РЅРёРµ");
                     }
                 }
             });
@@ -64,59 +116,11 @@ $(function () {
         }
     }
 
-    // Open channel
     function initChannels() {
         $('#channels a').each(function () {
             $(this).click(function (event) {
                 openChannel($(this).html());
             });
-        });
-    }
-
-    function openChannel(title) {
-        $.ajax({
-            type: "POST",
-            url: '/chat/openChannel.php',
-            data: ({title: title}),
-            success: function (msg) {
-                if (msg) {
-                    $('#room h2').html(msg);
-                    var stateParameters = {url: ''};
-                    history.pushState(stateParameters, "", '/chat.php?title=' + title); // меняем адрес
-                    channelMessages();
-                } else {
-                    alert("Ошибка открытия Channel");
-                }
-            }
-        });
-    }
-
-    if (parts = String(document.location).split("?", 2)[1]) {
-        var parts = String(document.location).split("?", 2)[1].split("&");
-        var vars = parts[0].split('=');
-        var name = vars[0];
-        if (name == 'title') {
-            var title = vars[1];
-            if (title) {
-                openChannel(title);
-            }
-        }
-    }
-
-    function channelMessages() {
-        var title = $('#room .top h2').html();
-
-        $.ajax({
-            type: "POST",
-            url: '/chat/channelMessages.php',
-            data: ({title: title}),
-            success: function (msg) {
-                if (msg) {
-                    $('#room .messages').html(msg);
-                } else {
-                    $('#room .messages').html('');
-                }
-            }
         });
     }
 
@@ -131,17 +135,47 @@ $(function () {
         var title = $('#room .top h2').html();
 
         if (message.length == 0) {
-            alert("Сообщение не может быть пустым");
+            alert("РЎРѕРѕР±С‰РµРЅРёРµ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј");
         } else {
             $.ajax({
                 type: "POST",
                 url: '/chat/addMessage.php',
-                data: ({message: message, login:login, title: title}),
+                data: ({message: message, login: login, title: title}),
                 success: function (msg) {
                     if (msg == 1) {
-                        alert('Сообщение успешно отправленно');
+                        alert('РЎРѕРѕР±С‰РµРЅРёРµ СѓСЃРїРµС€РЅРѕ РѕС‚РїСЂР°РІР»РµРЅРЅРѕ');
+                        $('#newMessage').val('');
                     } else if (msg == 9) {
-                        alert("Сообщение введено название");
+                        alert("РЎРѕРѕР±С‰РµРЅРёРµ РІРІРµРґРµРЅРѕ РЅР°Р·РІР°РЅРёРµ");
+                    }
+                }
+            });
+
+        }
+    }
+    
+    // Add RSS
+    $('#add-rss').click(function (event) {
+        addRss();
+    });
+
+    function addRss() {
+        var urlRss = $('.services input[name="rss"]').val();
+        var title = $('#room .top h2').html();
+
+        if (urlRss.length == 0) {
+            alert("RSS РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј");
+        } else {
+            $.ajax({
+                type: "POST",
+                url: '/chat/svAddRSS.php',
+                data: ({urlRss: urlRss, title: title}),
+                success: function (msg) {
+                    if (msg == 1) {
+                        alert('RSS СѓСЃРїРµС€РЅРѕ РґРѕР±Р°РІР»РµРЅ');
+                        $('.services input[name="rss"]').val('');
+                    } else if (msg == 9) {
+                        alert("РќРµ РїСЂР°РІРёР»СЊРЅРѕ СѓРєР°Р·Р°РЅ RSS");
                     }
                 }
             });

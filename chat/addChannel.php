@@ -4,7 +4,7 @@ session_start();
 require_once '../mysqlConnect.php';
 require_once '../helper.php';
 
-//Добавление логина
+
 if (isset($_POST['title']) && !empty($_POST['title'])) {
     $title = encode($_POST['title']);
 

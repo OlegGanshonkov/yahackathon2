@@ -7,7 +7,7 @@ function encode($var) {
     return $var;
 }
 
-//Добавление логина
+//Р”РѕР±Р°РІР»РµРЅРёРµ Р»РѕРіРёРЅР°
 if (isset($_POST['login']) && !empty($_POST['login']) && isset($_POST['password']) && !empty($_POST['password'])) {
     $login = encode($_POST['login']);
     $password = encode($_POST['password']);

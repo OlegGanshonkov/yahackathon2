@@ -1,12 +1,12 @@
 $(function () {
     var userLogin = "";
 
-    // Регистрация пользователя
+    // Р РµРіРёСЃС‚СЂР°С†РёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
     $('#registrationButton').click(function (event) {
         registration();
     });
 
-    // Авторизация пользователя
+    // РђРІС‚РѕСЂРёР·Р°С†РёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
     $('#loginButton').click(function (event) {
         login();
     });
@@ -16,7 +16,7 @@ $(function () {
         var password = $('#registration-block input[name="password"]').val();
 
         if (login.length == 0) {
-            alert("Логин не может быть пустым");
+            alert("Р›РѕРіРёРЅ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј");
         } else {
             $.ajax({
                 type: "POST",
@@ -26,9 +26,9 @@ $(function () {
                     if (msg == 1) {
                         document.location.href = '/chat.php';
                     } else if (msg == 2) {
-                        alert("Логин занят")
+                        alert("Р›РѕРіРёРЅ Р·Р°РЅСЏС‚")
                     } else if (msg == 9) {
-                        alert("Неверно введен логин или пароль")
+                        alert("РќРµРІРµСЂРЅРѕ РІРІРµРґРµРЅ Р»РѕРіРёРЅ РёР»Рё РїР°СЂРѕР»СЊ")
                     }
                 }
             });
@@ -41,7 +41,7 @@ $(function () {
         var password = $('#login-block input[name="password"]').val();
 
         if (login.length == 0) {
-            alert("Логин не может быть пустым");
+            alert("Р›РѕРіРёРЅ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј");
         } else {
             $.ajax({
                 type: "POST",
@@ -51,9 +51,9 @@ $(function () {
                     if (msg == 1) {
                         document.location.href = '/chat.php';
                     } else if (msg == 2) {
-                        alert("Неверно введен логин или пароль");
+                        alert("РќРµРІРµСЂРЅРѕ РІРІРµРґРµРЅ Р»РѕРіРёРЅ РёР»Рё РїР°СЂРѕР»СЊ");
                     } else if (msg == 9) {
-                        alert("Неверно введен логин или пароль");
+                        alert("РќРµРІРµСЂРЅРѕ РІРІРµРґРµРЅ Р»РѕРіРёРЅ РёР»Рё РїР°СЂРѕР»СЊ");
                     }
                 }
             });

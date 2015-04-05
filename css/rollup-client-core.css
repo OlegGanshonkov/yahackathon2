@@ -1194,7 +1194,10 @@ hr{margin:1.25rem 0}
 #user_menu i{position:absolute;color:#a09a9f;top:1.5rem;right:1rem;font-size:1rem;-webkit-transitionDISABLED:color .1s ease-out;-moz-transitionDISABLED:color .1s ease-out;-o-transitionDISABLED:color .1s ease-out;transitionDISABLED:color .1s ease-out}
 #user_menu:hover i{color:white}
 #connection_icon{width:12px;height:12px;position:absolute;top:38px;left:63px}
-#connection_status{margin-left:1rem;line-height:1.1rem}
+#connection_status{
+	/*margin-left:1rem;*/
+	line-height:1.1rem;
+}
 .messages_banner{font-family:'Lato',sans-serif;color:white;text-align:center;font-size:.9rem;font-weight:900;line-height:1.2rem;padding:.2rem .4rem 0;-webkit-border-top-right-radius:0;-webkit-border-bottom-right-radius:.25rem;-webkit-border-bottom-left-radius:.25rem;-webkit-border-top-left-radius:0;-moz-border-radius-topright:0;-moz-border-radius-bottomright:.25rem;-moz-border-radius-bottomleft:.25rem;-moz-border-radius-topleft:0;border-top-right-radius:0;border-bottom-right-radius:.25rem;border-bottom-left-radius:.25rem;border-top-left-radius:0;-moz-background-clip:padding-box;-webkit-background-clip:padding-box;background-clip:padding-box;margin-left:236px;margin-right:400px;-webkit-transitionDISABLED:background .1s ease-out;-moz-transitionDISABLED:background .1s ease-out;-o-transitionDISABLED:background .1s ease-out;transitionDISABLED:background .1s ease-out;position:absolute;top:0;left:0;right:1rem;z-index:50;height:25px;text-shadow:0 1px rgba(0,0,0,0.15);-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;z-index:99}
 .messages_banner a,.messages_banner a:hover{color:white}
 .flex_pane_showing.details_showing .messages_banner{margin-right:323px}
@@ -1284,8 +1287,8 @@ hr{margin:1.25rem 0}
 	top:18px;
 }
 .feature_flexpane_rework #flex_menu_toggle{right:9px}
-.feature_flexpane_rework #stars_toggle{right:47px}
-.feature_flexpane_rework #recent_mentions_toggle{right:86px}
+.feature_flexpane_rework #stars_toggle{right:30px}
+.feature_flexpane_rework #recent_mentions_toggle{right:66px}
 .feature_flexpane_rework #details_toggle{right:323px}
 #client-ui.flex_pane_showing:not(.details_showing) .feature_flexpane_rework #details_toggle,#client-ui.search_focused .feature_flexpane_rework #details_toggle{right:400px}
 @media screen and (min-width:1367px){.feature_flexpane_rework #details_toggle{right:440px}

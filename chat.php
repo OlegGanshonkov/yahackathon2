@@ -45,19 +45,18 @@ if (!isset($_SESSION['user'])) {
         <div id='client-ui' class='container-fluid sidebar_theme_ocean_theme'>
 
             <div id="header" class="feature_flexpane_rework">
-
+        
                 <div id="channel_header">
 
                     <div id="team_menu">
-                        <span id="team_name" class="overflow_ellipsis right_padding">OpenCommunity</span>
+                        <span id="team_name" class="overflow_ellipsis right_padding" style="font-size: 1.4rem;">OpenCommunity</span>
                         <i class="fa fa-chevron-down"></i>
-                    </div>			
-
+                    </div>          
+                    
                     <h2 id="active_channel_name" class="overflow_ellipsis">
-                        <span class="name "><span class="prefix">&#35;</span><span id="title-room">Выберите комнату</span>
-                            &nbsp;<button  class="close myClose" title="Выйти" id="logout" style="margin-top: 10px;">X</button></span>
+                        <span class="name "><span class="prefix">&#35;</span>Michael Pchelnikov</span>
                     </h2>
-
+                
                 </div>
 
                 <a id="details_toggle" title="Show Channel Info" class="flexpane_toggle_button">
@@ -65,7 +64,7 @@ if (!isset($_SESSION['user'])) {
                 </a>
 
                 <a id="details_toggle" title="Show Channel Info" class="flexpane_toggle_button" style="right: 400px; top: 20px; opacity: 50%;">
-                    525
+                    523
                 </a>
 
                 <a id="details_toggle" title="Show Channel Info" class="flexpane_toggle_button" style="right: 370px; top: 20px; color: #06A56F; opacity: 50%;">
@@ -74,18 +73,18 @@ if (!isset($_SESSION['user'])) {
 
                 <div id="search_container">
                     <form method="get" action="/search" id="header_search_form" class="search_form no_bottom_margin">
-                        <input type="text" id="search_terms" name="q" class="search_input" placeholder="Search" autocomplete="off" value="" maxlength="250" />
-                        <i class="ts_icon ts_icon_search icon_search"></i>
-                        <!-- <a id="search_clear" class="icon_close client_header_icon"></a> -->
+                        <input type="text" id="search_terms" name="q" class="search_input" placeholder="Поиск" autocomplete="off" value="" maxlength="250" style="-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;" />
                     </form>
                 </div>
 
-                <a id="recent_mentions_toggle" title="Show Recent Mentions" class="flexpane_toggle_button"><i class="ts_icon ts_icon_mentions"></i></a>
+                <a id="recent_mentions_toggle" title="Show Recent Mentions" class="flexpane_toggle_button">
+                    <img src="images/sobaka.png" height="19" width="20" />
+                </a>
 
-                <a id="stars_toggle" title="Show Bookmarks" class="flexpane_toggle_button"><i class="ts_icon ts_icon_star_o"></i></a>
-
-                <a id="flex_menu_toggle" title="Open Flexpane Menu" class="flexpane_toggle_button"><i class="ts_icon ts_icon_ellipsis"></i><span class="help_icon_icon" id="help_icon_circle_count">0</span></a>
-
+                <a id="stars_toggle" title="Show Bookmarks" class="flexpane_toggle_button">
+                    <img src="images/share.png" height="20" width="19" />
+                </a>
+            
             </div>
 
             <div id="footer">

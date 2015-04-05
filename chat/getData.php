@@ -39,7 +39,7 @@ if (isset($_POST['title'])) {
     $channel_id = $row['id'];
 
     $rows = array();
-    $query = "SELECT cm.*, u.login FROM channel_messages cm LEFT JOIN users u ON u.id = cm.author_id WHERE channel_id = '" . $channel_id . "' ORDER BY cm.id DESC LIMIT 10";
+    $query = "SELECT cm.*, u.login FROM channel_messages cm LEFT JOIN users u ON u.id = cm.author_id WHERE channel_id = '" . $channel_id . "' ORDER BY cm.id DESC LIMIT 100";
     $result = $db->query($query);
     while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
         $rows[] = $row;

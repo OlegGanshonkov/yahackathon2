@@ -1,3 +1,28 @@
+#user-login {
+    visibility: hidden;
+    height: 0px;
+}
+
+#channel-list i { font-style: normal; }
+
+#channels_scroller { overflow: auto;}
+
+#channel-block {
+    display:none;
+    position: absolute;
+    z-index: 100;
+    top: 50px;
+    left: 50px;
+    background: #fff;
+    padding: 20px;
+    border:1px solid #ccc;
+}
+.col1, .col2{
+    margin-bottom: 10px;
+}
+
+.myClose { cursor: pointer; margin-left: 20px; }
+/*
 body {
     padding: 15px;
     background: #f4f4f4;
@@ -40,10 +65,7 @@ button {
 
 h2 { text-align: center; }
 
-#user-login {
-    visibility: hidden;
-    height: 0px;
-}
+
 
 #room {
     border: 1px solid #ccc;
@@ -67,3 +89,4 @@ h2 { text-align: center; }
     padding: 10px;
     min-width:300px;
 }
+*/

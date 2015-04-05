@@ -47,7 +47,7 @@ $(function () {
             success: function (msg) {
                 if (msg) {
                     CURRENT_TITLE = title;
-                    $('#room h2').html(title);
+                    $('#title-room').html(title);
                     var stateParameters = {url: ''};
                     history.pushState(stateParameters, "", '/chat.php?title=' + title); // меняем адрес
                 } else {
@@ -63,7 +63,7 @@ $(function () {
         }
         var title = CURRENT_TITLE;
         if (!title)
-            title = $('#room .top h2').html();
+            title = $('#title-room').html();
 
         $.ajax({
             type: "POST",
@@ -74,11 +74,11 @@ $(function () {
                 $.each(data, function (i, val) {
                     if (i == 'channels') {
                         CHANNELS = val;
-                        $('#channels').html(CHANNELS);
+                        $('#channel-list').html(CHANNELS);
                         initChannels();
                     } else if (i == 'messages') {
                         MESSAGES = val;
-                        $('#room .messages').html(MESSAGES);
+                        $('#msgs_div').html(MESSAGES);
                     }
                     else if (i == 'rss') {
                         RSS = val;
@@ -96,6 +96,15 @@ $(function () {
         addChannel();
     });
 
+    $('#channels_header').click(function (event) {
+        $('#channel-block').show();
+    });
+    $('#channel-block .myClose').click(function (event) {
+        $('#channel-block').hide();
+    });
+
+
+
     function addChannel() {
         var title = $('#channel-block input[name="title"]').val();
 
@@ -109,6 +118,7 @@ $(function () {
                 success: function (msg) {
                     if (msg == 1) {
                         alert('Channel успешно добавлен');
+                        $('#channel-block').hide();
                     } else if (msg == 2) {
                         alert("Channel с таким названием уже существует");
                     } else if (msg == 9) {
@@ -121,7 +131,7 @@ $(function () {
     }
 
     function initChannels() {
-        $('#channels a').each(function () {
+        $('#channel-list i').each(function () {
             $(this).click(function (event) {
                 openChannel($(this).html());
             });
@@ -129,14 +139,19 @@ $(function () {
     }
 
     // Add message
-    $('#newMessage-button').click(function (event) {
-        addMessage();
+    $('#message-input').keypress(function (e) {
+        var key = e.which;
+        if (key == 13)  // the enter key code
+        {
+            addMessage();
+            return false;
+        }
     });
 
     function addMessage() {
         var login = $('#user-login').html();
-        var message = $('#newMessage').val();
-        var title = $('#room .top h2').html();
+        var message = $('#message-input').val();
+        var title = $('#title-room').html();
 
         if (message.length == 0) {
             alert("Сообщение не может быть пустым");
@@ -148,9 +163,9 @@ $(function () {
                 success: function (msg) {
                     if (msg == 1) {
                         /*alert('Сообщение успешно отправленно');*/
-                        $('#newMessage').val('');
+                        $('#message-input').val('');
                     } else if (msg == 9) {
-                        alert("Сообщение введено название");
+                        alert("Сообщение введено неверно");
                     }
                 }
             });

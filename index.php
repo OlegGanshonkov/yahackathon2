@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <script src="/js/jquery-2.1.3.min.js" type="text/javascript"></script>
         <script src="/js/all.js" type="text/javascript"></script>
         <title>OpenCommunity - Login</title>

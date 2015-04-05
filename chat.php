@@ -128,7 +128,34 @@ if (!isset($_SESSION['user'])) {
 
                                 <div id="direct_messages" class="section_holder">
                                     <h2 id="direct_messages_header" class="hoverable overflow_ellipsis">Контакты</h2>
-                                    <ul id="im-list"></ul>
+                                    <ul id="im-list">
+                                    <li class="channel_100 channel ">
+                                        <a class="channel_name">
+                                            <span class="overflow_ellipsis">                                                
+                                                <span class="prefix_np"><img src="images/online.png" height="10" width="10" alt=""></span>
+                                                Oleg Gan
+                                            </span>
+                                        </a>
+                                    </li>
+                                        
+                                    <li class="channel_200 channel ">
+                                        <a class="channel_name">
+                                            <span class="overflow_ellipsis">
+                                                <span class="prefix_np"><img src="images/online.png" height="10" width="10" alt=""></span>
+                                                Sergey Soldatov
+                                            </span>
+                                        </a>
+                                    </li>
+
+                                    <li class="channel_300 channel ">
+                                        <a class="channel_name">
+                                            <span class="overflow_ellipsis">                                                
+                                                <span class="prefix_np"><img src="images/offline.png" height="10" width="10" alt=""></span>
+                                                Alexander Vasiliev
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
                                     <div class="clear_both"></div>
                                 </div>
 
@@ -137,7 +164,7 @@ if (!isset($_SESSION['user'])) {
                             <div id='user_menu'>
                                 <div id="current_user_avatar"><span class="member_image thumb_48" style="background-image: url('images/ava.jpg')"></span></div>
                                 <span id="current_user_name" class="overflow_ellipsis"><?php echo $_SESSION['user']; ?></span>
-                                <span id="connection_status"></span>
+                                <span id="connection_status"><img src="images/online.png" height="10" width="10" alt="">&nbsp;&nbsp;Online</span>
                                 <i class="fa fa-chevron-up"></i>
                             </div>
 

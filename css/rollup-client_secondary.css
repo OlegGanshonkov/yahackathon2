@@ -812,6 +812,7 @@ ul.end_display_actions li{display:inline-block;margin:0 1rem 1rem 0;list-style:n
 	display: block;
 	min-height: 1rem;
 	margin-top: 2px;
+	line-height: 1.3rem;
 }
 .ephemeral.message .ephemeral_notice{font-size:.7rem;color:#babbbf;line-height:1.2rem}
 .msg_inline_img_expander,.msg_inline_img_collapser,.msg_inline_email_expander,.msg_inline_email_collapser,.msg_inline_video_expander,.msg_inline_video_collapser,.msg_inline_other_expander,.msg_inline_other_collapser,.msg_inline_audio_expander,.msg_inline_audio_collapser,.msg_inline_attachment_expander,.msg_inline_attachment_collapser{cursor:pointer;font-size:1rem;padding:.25rem;color:#2a80b9}
